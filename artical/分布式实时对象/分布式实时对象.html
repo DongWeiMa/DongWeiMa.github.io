@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title> | Dongweima</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Dongweima</h1><a id="logo" href="/.">Dongweima</a><p class="description"></p></div><div id="nav-menu"><a href="/."><i class="fa fa-home"> articles</i></a><a href="/archives/"><i class="fa fa-archive"> archives</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"></h1><div class="post-content"><h1 id="rdc"><a href="#rdc" class="headerlink" title="rdc"></a>rdc</h1><h2 id="分布式实时对象解决"><a href="#分布式实时对象解决" class="headerlink" title="分布式实时对象解决"></a>分布式实时对象解决</h2><p>与原有redission解耦,不改redisson,而是扩展</p>
+<p>提供手动发布订阅的接口 pub—定义沟通<br>注册回掉 class<br>提供全局订阅回掉接口 callback(id)</p>
+<h2 id="分布式任务存在问题"><a href="#分布式任务存在问题" class="headerlink" title="分布式任务存在问题"></a>分布式任务存在问题</h2><p>mq解决<br>还是写库,会有写入redis速率问题,并发量也是一样的</p>
+<h3 id="无响应模式"><a href="#无响应模式" class="headerlink" title="无响应模式"></a>无响应模式</h3><p>先存到本地,再同步到队列,再从队列中获取出来处理</p>
+<h4 id="无响应模式的存在的问题"><a href="#无响应模式的存在的问题" class="headerlink" title="无响应模式的存在的问题"></a>无响应模式的存在的问题</h4><ol>
+<li>还没写入redis队列就已经失败了</li>
+<li>写入redis队列也有个时延问题</li>
+<li>无法使用redis的订阅和发布,基本只能靠轮询,关键问题是,就算服务端获取到要执行的任务,失败还得重新写入到队列中,这个不一定成功。或者成功删除队列头部,同样不一定成功</li>
+<li>redis挂了,队列数据会不会丢失?</li>
+<li>redis挂的瞬间,如果有和服务端通信,这个时候服务端成功接受到请求,但是无法对redis进行相应,也就是说处理了也白处理,反而可能导致重复处理问题–但是幂等的问题不应该由应用来处理</li>
+</ol>
+<p>还有就是redis挂了怎么办,任务一定是失败的,有没有任何通知机制</p>
+<h3 id="分布式任务解决"><a href="#分布式任务解决" class="headerlink" title="分布式任务解决"></a>分布式任务解决</h3><p>mq<br>mq的问题</p>
+</div></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论 「请确保 disqus.com 可以正常加载」</button></div><script>var disqus_shortname = 'dongweima';
+var disqus_identifier = 'artical/分布式实时对象/分布式实时对象.html';
+var disqus_title = '';
+var disqus_url = 'http://flyily.com/artical/分布式实时对象/分布式实时对象.html';
+$('.btn_click_load').click(function() {
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  $('.btn_click_load').css('display','none');
+});
+$.ajax({
+  url: 'https://disqus.com/next/config.json',
+  timeout: 3000,
+  type: 'GET',
+  success: (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    $('.btn_click_load').css('display','none');
+  })(),
+  error: function() {
+    $('.btn_click_load').css('display','block');
+  }
+});</script><script id="dsq-count-scr" src="//dongweima.disqus.com/count.js" async></script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://flyily.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/软件配置/">软件配置</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/maven/" style="font-size: 15px;">maven</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/ssh/" style="font-size: 15px;">ssh</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 个人</i></div><ul></ul><a href="https://github.com/dongweima" title="github" target="_blank">github</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Dongweima.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
