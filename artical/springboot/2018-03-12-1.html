@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title> | Dongweima</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Dongweima</h1><a id="logo" href="/.">Dongweima</a><p class="description"></p></div><div id="nav-menu"><a href="/."><i class="fa fa-home"> articles</i></a><a href="/archives/"><i class="fa fa-archive"> archives</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"></h1><div class="post-content"><h2 id="1-默认日志配置；"><a href="#1-默认日志配置；" class="headerlink" title="1.默认日志配置；"></a>1.默认日志配置；</h2><p>如果项目使用Starters，则默认使用Logback作为日志记录工具，并且默认配置下日志只会在控制台输出</p>
+<h3 id="开启调试模式记录更多信息，有两种方法："><a href="#开启调试模式记录更多信息，有两种方法：" class="headerlink" title="开启调试模式记录更多信息，有两种方法："></a>开启调试模式记录更多信息，有两种方法：</h3><ol>
+<li><p>命令行启动应用时指定开启调试模式，例如如下命令行：java -jar test.jar –debug；</p>
+</li>
+<li><p>在application.properties中配置debug=true，或在application.yml中配置debug：true ；</p>
+</li>
+</ol>
+<p>需要注意的是开启调试模式并不是改变日志记录的级别为DEBUG！</p>
+<h2 id="2-日志输出到文件；"><a href="#2-日志输出到文件；" class="headerlink" title="2.日志输出到文件；"></a>2.日志输出到文件；</h2><p>在实际的项目开发中需要将日志信息记录到文件中，以便保存和查询问题。可以在application.properties中配置logging.file属性，用于指定日志文件的位置(可以是相对位置或绝对位置)和名称，它将会把日志信息记录到对应位置下的日志文件中，例如配置logging.file=app.log，将会在当前classpath下创建app.log，并将日志信息记录到这个文件中。这个日志文件配置同样可以配置在application.yml中。</p>
+<p>也可以在application.properties中配置logging.path属性，用于指定日志文件的位置，可以是相对位置或绝对位置 ，同时生成的日志文件名称固定为spring.log，例如配置logging.path=/logs，将会在根目录下创建logs目录，并生成spring.log日志文件，日志信息记录到这个文件中。这个日志文件位置配置同样可以配置在application.yml中。</p>
+<p>本以为Spring Boot的这两个属性配置是可以配合使用，实验发现并不能。如果同时配置了logging.file和logging.path，最终生效的只是logging.file。</p>
+<h2 id="3-日志文件大小；"><a href="#3-日志文件大小；" class="headerlink" title="3.日志文件大小；"></a>3.日志文件大小；</h2><p>指定日志信息输出到文件后，默认情况下使用Logback作为日志记录工具，会记录ERROR、WARN和INFO级别的日志信息，并且日志文件大小超过10MB后，日志文件将会被打包成.gz的压缩文件，且压缩文件名称会排序累加，例如app.log.2018-03-06.0.gz、app.log.2018-03-06.1.gz。</p>
+<p>当然也可以修改日志文件最大大小，通过在application.properties中配置logging.file.max-size，例如配置最大大小为100MB，则logging.file.max-size=100MB，这里需要注意的是这个属性配置仅对默认Logback生效</p>
+<p>还需要注意的是，logging.file.max-size属性值需要带单位，可以是KB、MB或GB，单位大小写不敏感都可以使用</p>
+<p>还有一个Logback的专有属性配置logging.file.max-history，用于配置保存存档日志文件的最大值。</p>
+<h2 id="4-修改日志级别；"><a href="#4-修改日志级别；" class="headerlink" title="4.修改日志级别；"></a>4.修改日志级别；</h2><p>修改日志记录的级别可以在application.properties或application.yml中配置，添加logging.level.<logger-name>=<level>，其中level可以是TRACE、DEBUG、INFO、WARN、ERROR、FATAL或OFF，对于root级的配置可以使用logging.level.root，下面是一些配置示例：</level></logger-name></p>
+<p>logging.level.root=INFO</p>
+<p>logging.level.org.springframework.web=DEBUG</p>
+<p>logging.level.org.hibernate=ERROR</p>
+<h2 id="5-自定义日志工具；"><a href="#5-自定义日志工具；" class="headerlink" title="5.自定义日志工具；"></a>5.自定义日志工具；</h2><h2 id="6-配置文件优先级。"><a href="#6-配置文件优先级。" class="headerlink" title="6.配置文件优先级。"></a>6.配置文件优先级。</h2></div></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论 「请确保 disqus.com 可以正常加载」</button></div><script>var disqus_shortname = 'dongweima';
+var disqus_identifier = 'artical/springboot/2018-03-12-1.html';
+var disqus_title = '';
+var disqus_url = 'http://flyily.com/artical/springboot/2018-03-12-1.html';
+$('.btn_click_load').click(function() {
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  $('.btn_click_load').css('display','none');
+});
+$.ajax({
+  url: 'https://disqus.com/next/config.json',
+  timeout: 3000,
+  type: 'GET',
+  success: (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    $('.btn_click_load').css('display','none');
+  })(),
+  error: function() {
+    $('.btn_click_load').css('display','block');
+  }
+});</script><script id="dsq-count-scr" src="//dongweima.disqus.com/count.js" async></script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://flyily.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/分布式/">分布式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/协议/">协议</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/单元测试/">单元测试</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构与算法/">数据结构与算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件配置/">软件配置</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/ssh/" style="font-size: 15px;">ssh</a> <a href="/tags/单元测试/" style="font-size: 15px;">单元测试</a> <a href="/tags/mweb/" style="font-size: 15px;">mweb</a> <a href="/tags/印象笔记/" style="font-size: 15px;">印象笔记</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/mac/" style="font-size: 15px;">mac</a> <a href="/tags/redis/" style="font-size: 15px;">redis</a> <a href="/tags/数据结构与算法/" style="font-size: 15px;">数据结构与算法</a> <a href="/tags/websocket/" style="font-size: 15px;">websocket</a> <a href="/tags/redisson/" style="font-size: 15px;">redisson</a> <a href="/tags/分布式/" style="font-size: 15px;">分布式</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 个人</i></div><ul></ul><a href="https://github.com/dongweima" title="github" target="_blank">github</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Dongweima.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
