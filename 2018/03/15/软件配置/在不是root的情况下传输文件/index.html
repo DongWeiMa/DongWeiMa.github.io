@@ -1,26 +1,15 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>博客和印象笔记的统一 | Dongweima</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">博客和印象笔记的统一</h1><a id="logo" href="/.">Dongweima</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> articles</i></a><a href="/archives/"><i class="fa fa-archive"> archives</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">博客和印象笔记的统一</h1><div class="post-meta">Mar 11, 2018<span> | </span><span class="category"><a href="/categories/软件配置/">软件配置</a></span></div><a class="disqus-comment-count" data-disqus-identifier="2018/03/11/软件配置/博客和印象笔记的统一/" href="/2018/03/11/软件配置/博客和印象笔记的统一/#disqus_thread"></a><div class="post-content"><p>以前博客和笔记是分离的,也懒得把笔记复制粘贴再发布到github上,现在找到了更好的统一实践方案<br><a id="more"></a></p>
-<h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><p>基于mweb,和印象笔记<br>hexo框架</p>
-<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ol>
-<li>博客文章归博客文章</li>
-<li>还没写好的文章或者不想发布到博客的文章单独归于一处</li>
-<li>所有文章都能同步到印象笔记中去</li>
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>在不是root的情况下传输文件 | Dongweima</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">在不是root的情况下传输文件</h1><a id="logo" href="/.">Dongweima</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> articles</i></a><a href="/archives/"><i class="fa fa-archive"> archives</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">在不是root的情况下传输文件</h1><div class="post-meta">Mar 15, 2018<span> | </span><span class="category"><a href="/categories/软件配置/">软件配置</a></span></div><a class="disqus-comment-count" data-disqus-identifier="2018/03/15/软件配置/在不是root的情况下传输文件/" href="/2018/03/15/软件配置/在不是root的情况下传输文件/#disqus_thread"></a><div class="post-content"><p>遇到一个问题,虽然sudo 可以进行操作,但是ftp的时候因为权限不足导致无法上传文件.</p>
+<a id="more"></a>
+<h2 id="三个解决方法"><a href="#三个解决方法" class="headerlink" title="三个解决方法"></a>三个解决方法</h2><ol>
+<li>scp</li>
+<li>先上传自己的home目录下,再ssh上去移动文件夹</li>
+<li>修改文件夹权限2333</li>
 </ol>
-<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>mweb有两种模式,一种是文档模式,一种是外部模式.</p>
-<blockquote>
-<p>外部模式就是指定外部的文件夹作为目录打开,而hexo的文章都在同一个目录下,也就是_post目录下.</p>
-</blockquote>
-<blockquote>
-<p>mweb还支持自动关联,下次就算把这篇文章改名字或保存到其他文件夹下,他和已上传印象笔记的文章一定是一一对应的</p>
-</blockquote>
-<ol>
-<li><strong>所以_post文件夹就是博客文件夹(可以在该文件夹下随意建子目录,文章也能被识别到)</strong></li>
-<li>在_post同级目录下创建artical文件夹,并且把该文件夹设置到gitignore配置文件中,作为不想发布的文件夹(因为这个项目本身也是要上传github的,不想上传上去,因为有些是笔记)</li>
-<li>设置mweb,关联印象笔记,此时就可以点击发布-印象笔记发布到印象笔记中.</li>
-</ol>
-</div><div class="tags"><a href="/tags/mac/">mac</a><a href="/tags/mweb/">mweb</a><a href="/tags/印象笔记/">印象笔记</a></div><div class="post-nav"><a class="pre" href="/2018/03/11/软件配置/ssh多账号/">git ssh 多账号</a><a class="next" href="/2016/05/21/基础/websocket基础/">websocket基础</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论 「请确保 disqus.com 可以正常加载」</button></div><script>var disqus_shortname = 'dongweima';
-var disqus_identifier = '2018/03/11/软件配置/博客和印象笔记的统一/';
-var disqus_title = '博客和印象笔记的统一';
-var disqus_url = 'http://flyily.com/2018/03/11/软件配置/博客和印象笔记的统一/';
+<p>sudo chown -R user:user folder</p>
+</div><div class="tags"><a href="/tags/shell/">shell</a><a href="/tags/ftp/">ftp</a><a href="/tags/sudo/">sudo</a></div><div class="post-nav"><a class="next" href="/2018/03/15/软件配置/mac 开机自启/">mac 开机自启</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论 「请确保 disqus.com 可以正常加载」</button></div><script>var disqus_shortname = 'dongweima';
+var disqus_identifier = '2018/03/15/软件配置/在不是root的情况下传输文件/';
+var disqus_title = '在不是root的情况下传输文件';
+var disqus_url = 'http://flyily.com/2018/03/15/软件配置/在不是root的情况下传输文件/';
 $('.btn_click_load').click(function() {
   (function() {
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
