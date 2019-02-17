@@ -1,0 +1,10 @@
+
+## 模式匹配
+ghci> :{
+Prelude| lucky 7 = "LUCKY NUMBER SEVEN!"
+Prelude| lucky x = "Sorry, you're out of luck, pal!"
+Prelude| :}
+ghci> lucky 8
+"Sorry, you're out of luck, pal!"
+ghci> lucky 7
+"LUCKY NUMBER SEVEN!"

@@ -1,0 +1,226 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title> | Dongweima</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Dongweima</h1><a id="logo" href="/.">Dongweima</a><p class="description"></p></div><div id="nav-menu"><a href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"></h1><div class="post-content"><h1 id="类之间的关系"><a href="#类之间的关系" class="headerlink" title="类之间的关系"></a>类之间的关系</h1><p>来源于北大课程ppt<br>周秉锋<br>北京大学计算机科学技术研究所<br>2013</p>
+<h2 id="关系的定义"><a href="#关系的定义" class="headerlink" title="关系的定义"></a>关系的定义</h2><pre><code>对象不是孤立的,推导出:他必定参与某一交互
+
+参与一个交互,各对象之间必然发现语义的连接
+   对象的特性，包括结构方面和行为方面的特性
+    在UML中，它被类所捕获。
+
+对象的类之间也必然存在语义的连接
+    这种连接，在UML中，被抽象为类之间的关系。
+    在UML中，类之间的语义连接被定义为关系。
+
+类之间的关系的建模，为其对象之间的交互提供了实现支持。
+    对象之间的交互，可以对应到类之间的关系，
+    而这些关系，又可以被映射到大多数的程序设计语言，从而使得对象之间交互得到最终的实现
+</code></pre><h2 id="常用关系"><a href="#常用关系" class="headerlink" title="常用关系"></a>常用关系</h2><p>依赖关系<br>关联关系<br>泛化关系</p>
+<h3 id="依赖关系"><a href="#依赖关系" class="headerlink" title="依赖关系"></a>依赖关系</h3><pre><code>在一个交互中，存在着对象之间消息的传递。
+        消息的传递
+        大多数情况下是以函数调用的形式实现的，
+        有时也会通过直接访问目标对象的成员变量的形式实现。
+
+消息的传递，意味着源对象的某些功能或动态特性将依赖于目标对象的功能或动态特性。
+
+在类图上强调类的对象之间的这种关系，可以在对象的对应类之间建立依赖关系。
+
+依赖关系的定义：
+        两个类之间的依赖关系，表明其中的一个类（客户类）的语义依赖于另一个类（供应类）所提供的某些服务。
+
+图形表示：
+        依赖关系被图形化地表示为一个带虚线的箭头
+        箭头所指的类是供应类（被依赖的类）
+
+
+两个类之间存在着依赖关系，
+       意味着客户类的语义依赖于服务类的语义。
+        服务类的语义的变化，将会导致客户类的语义的变化。
+
+如果两个类的对象之间存在着下面的情形，且两个类之间不存在结构方面的联系（例如：供应类以成员变量的形式作为客户类的一部分），就可以建模成为具有依赖关系，这些情形是：
+        (1)、客户类访问定义在供应类内部的值（常量或变量）o
+        (2)、客户类的操作启动了定义在供应类内的操作。
+        (3)、客户类的返回类或参数是供应类的实例。
+</code></pre><h3 id="泛化关系"><a href="#泛化关系" class="headerlink" title="泛化关系"></a>泛化关系</h3><pre><code>位图观察器的例子, 鼠标工具
+        通常, 在这样的应用软件系统中, 会存在多个鼠标工具
+            它们都从操作系统接收同样的鼠标消息
+                对这些鼠标消息的不同解释, 使得各鼠标工具的功能得以区分。
+                在实现这些鼠标工具时
+                    每一个鼠标工具用一个对象实现
+                    由于它们所处理的鼠标消息是相同的, 因此,
+                          -- 它们的实现类所具备的操作有许多是相同的
+                            -- 区别在于它们对操作的执行上各有不同。
+                    有的对象还有可能有些扩展的操作, 以实现不同工具的功能。
+                    在面向对象的程序设计语言中, 这样的鼠标工具的一组实现对象的实现类可以共同定义为某个基类的导出类。
+                     在UML中, 则用泛化关系为这种基类/导出类的关系建模
+
+
+简单来说就是最后一句话:    在UML中, 则用泛化关系为这种基类/导出类的关系建模
+</code></pre><h4 id="泛化关系的定义"><a href="#泛化关系的定义" class="headerlink" title="泛化关系的定义"></a>泛化关系的定义</h4><pre><code>UML中，泛化关系表示子类共享定义在一个或多个超类(parent)里的结构或行为。
+
+泛化关系表示类之间的一般和特殊的关系
+    在一组类中，如果它们都有一组相同的属性和操作，那么
+    可以把这组属性和操作定义在一个超类中
+    并把其它类与超类的关系定义为泛化关系
+
+如果两个类被定义为具有泛化关系
+    就意味着在任何超类的对象出现的地方，都可以用子类来代替。
+</code></pre><h4 id="泛化关系的图形表达"><a href="#泛化关系的图形表达" class="headerlink" title="泛化关系的图形表达"></a>泛化关系的图形表达</h4><pre><code>在UML中, 泛化关系被图形化地表示为一个带有空心三角形的箭头的线段.
+    箭头所指的方向是超类.
+    箭头起始端是子类。
+
+在泛化关系中
+    一个类可以有零个、 一个或多个多个超类
+    如果一个类只有一个超类
+        -- 那么就称为是单继承
+    如果一个类有多个超类
+        -- 就称为是多重继承
+    如果一个类没有超类但有一个或多个子类
+        -- 则这个类称为基类(base c1ass)_
+    如果一个类没有任何子类
+        --  则称为叶子类(1eaf c1ass)
+
+继承的多态性
+    在子类中, 如果存在一个操作和其超类中的操作具有相同的署名(signature), 则子类中的此操作的动态行为将替代超类的动态行为
+</code></pre><h3 id="关联关系"><a href="#关联关系" class="headerlink" title="关联关系"></a>关联关系</h3><pre><code>依赖关系和泛化关系反映的是类之间在动态行为方面的联系。
+在软件系统中还存在着大量的
+    结构方面的联系。
+        例如：建造管理信息系统
+        需要对其所处的管理机构的运行结构进行建模，
+        建立各管理实体之间的对应关系(部门和雇员之间的关系、销售部门和商品之间的关系等），
+        并在此基础上建立相应的数据库模式。
+        在以前经常使用的工具有
+        实体一关系模型，等。
+    在UML里
+        使用
+        关联关系描述
+</code></pre><h4 id="关联关系的定义"><a href="#关联关系的定义" class="headerlink" title="关联关系的定义:"></a>关联关系的定义:</h4><pre><code>关联关系的定义:
+  在UML里，
+    关联关系表示两个类或类和接口之间的语义连接。
+    关联关系可以是双向的。
+    它在所有的关系中间语义最弱
+        从关联关系的定义可以看出
+            如果两个类之间存在着依赖关系或泛化关系
+                那么它们一定也隐含着具有关连关系
+            但在些情况下，描述这种关联关系已经没有意义
+                所以一般不必再对这种关联关系进行描述，
+                或者说，这时关联关系已经被依赖关系或泛化关系所取代
+            这就是“语义最弱”的含义所在。    这就是“语义最弱”的含义所在。
+</code></pre><h4 id="关联关系是一种结构关系"><a href="#关联关系是一种结构关系" class="headerlink" title="关联关系是一种结构关系"></a>关联关系是一种结构关系</h4><pre><code>如果两个类之间存在着关联关系
+    则它们的对象是互相连接的（对象之间存在着连接关系）
+    即其中的一个对象可以访问另一个对象
+   它可以
+       访问另一个对象的属性，
+       或启动另一个对象的操作。
+</code></pre><h4 id="关联关系并不是仅仅一个抽象的概念"><a href="#关联关系并不是仅仅一个抽象的概念" class="headerlink" title="关联关系并不是仅仅一个抽象的概念"></a>关联关系并不是仅仅一个抽象的概念</h4><pre><code>它在实现为程序设计语言源代码时，会有对应的映射。
+    通常，当把两个有关联关系的类映射为特定的程序设计语言代码时，每一个类都会被定义为一个可以引用对方的类的对象的成员变量
+    这个成员变量视对关联关系的修饰的不同，可能会采取不同的形式，如：
+        它可以指向对方的类的指针
+        也可能是对方类的对象。
+</code></pre><h4 id="关联关系中的角色"><a href="#关联关系中的角色" class="headerlink" title="关联关系中的角色"></a>关联关系中的角色</h4><pre><code>如果两个类之间存在着关联关系，则
+    它们的对象可以互相访问
+        这意味着
+        对其中任意一个对象而言，存在着另外一个类的对象能被它访问。
+        为了访问关联关系的某一端类的对象
+        必须为它定义一个标识
+        使得通过这标识，另一个类的对象够访问被访问的对象。
+</code></pre><h5 id="角色的定义"><a href="#角色的定义" class="headerlink" title="角色的定义"></a>角色的定义</h5><pre><code>在UML里，关联关系两端的类的对象在对方的类里的标识，称为角色( role)。
+角色在关联关系的图形化表示里
+   由角色名(role name)表示。
+当关联关系里的类被映射到程序设计语言时
+    角色名字就成为类的一个成员变量的名字
+    此成员变量的类型将是
+        另一个类的对象
+        或指向另一个类的指针
+</code></pre><h5 id="角色的重复度"><a href="#角色的重复度" class="headerlink" title="角色的重复度"></a>角色的重复度</h5><pre><code>当一个类的对象以关联关系的角色的形式出现在另一个类里时
+    此角色可以在此类中出现一次
+    也可以出现多次。
+角色的重复度指的就是角色的这种出现次数
+角色重复度的定义
+   在UML里，角色重复度被定义为关联关系  的实例的两端所连接的对象的数目．
+
+角色重复度的图形表示:
+   角色重复度被图示为一个表达式
+   它被放置在关联关系中靠近相应角色的一侧
+   此达式确定了一个常数值或值的范围
+例如
+    重复度1
+        -- 代表对象作为角色必须出现且只出现1次。
+    重复度0 ...1
+        -- 表示对象作为角色可以出现0次或1次。
+    星号 (*)
+        -- 代表任意多次
+        -- 例如:
+            -重复度0…* : 表示对象作为角色可以出现0次或任意多次
+            -重复度1…* : 表示对象作为角色必须至少出现1次且可以出现多至任意多次
+</code></pre><h5 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h5><pre><code>关联关系的基本形式是双向的，
+    意味着关联关系两端的类的地位是平等的。
+关联关系又是一种结构关系
+    其中的角色代表着一个类的对象在另一个类中的存在。
+也就是说关联关系中类的对象被互相拥有
+有时，出于建模的需要，
+    有必要打破这种平等的关系
+    强调类与对象之间的有向的拥有关系
+为此，可以用聚合对关联关系进行修饰
+    以表示类和对象的拥有关系。
+</code></pre><h6 id="聚合关系的定义"><a href="#聚合关系的定义" class="headerlink" title="聚合关系的定义:"></a>聚合关系的定义:</h6><pre><code>在UML中, 聚合关系(aggregation)被定义为两个类之间的整体和部分的关系, 表明聚合关系中的客户端以供应端的类的对象作为其一部分.
+
+在聚合关系的客户端的类
+   有时又被称为聚合类
+    聚合类的实例是
+       聚合对象
+
+位于聚合关系的供应端的类
+   其实例是被聚合对象包含或拥有的部分
+
+如果两个类具有聚合关系, 则表示
+    其中 的聚合对象在物理上是由其它对象构造而来的
+    或逻辑上包含另一个对象。
+    聚合对象具有其部分的所有权。
+</code></pre><h6 id="聚合关系的图形表示"><a href="#聚合关系的图形表示" class="headerlink" title="聚合关系的图形表示"></a>聚合关系的图形表示</h6><pre><code>通过在关联关系的聚合类一侧放置一个菱形得到
+聚合关系还可被进一步修饰为两类：
+* 值聚合(by value,composite aggregate)
+* 引用聚合(by reference)
+</code></pre></div></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
+    this.page.url = 'http://flyily.com/artical/基础/2018-04-02.html';
+    this.page.identifier = 'artical/基础/2018-04-02.html';
+    this.page.title = '';
+  };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
+url: 'https://disqus.com/next/config.json',
+timeout: 2500,
+type: 'GET',
+success: function(){
+  var d = document;
+  var s = d.createElement('script');
+  s.src = '//dongweima.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', + new Date());
+  (d.head || d.body).appendChild(s);
+  $('.disqus_click_btn').css('display', 'none');
+},
+error: function() {
+  $('.disqus_click_btn').css('display', 'block');
+}
+});</script><script type="text/javascript" id="disqus-click-load">$('.btn_click_load').click(() => {  //click to load comments
+    (() => { // DON'T EDIT BELOW THIS LINE
+        var d = document;
+        var s = d.createElement('script');
+        s.src = '//dongweima.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    $('.disqus_click_btn').css('display','none');
+});</script><script type="text/javascript" id="disqus-count-script">$(function() {
+     var xhr = new XMLHttpRequest();
+     xhr.open('GET', '//disqus.com/next/config.json', true);
+     xhr.timeout = 2500;
+     xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4 && xhr.status === 200) {
+         $('.post-meta .post-comments-count').show();
+         var s = document.createElement('script');
+         s.id = 'dsq-count-scr';
+         s.src = 'https://dongweima.disqus.com/count.js';
+         s.async = true;
+         (document.head || document.body).appendChild(s);
+       }
+     };
+     xhr.ontimeout = function () { xhr.abort(); };
+     xhr.send(null);
+   });
+</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="http://flyily.com"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/jvm/">jvm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/springboot/">springboot</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/分布式/">分布式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/协议/">协议</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/单元测试/">单元测试</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构与算法/">数据结构与算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件配置/">软件配置</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/jar/" style="font-size: 15px;">-jar</a> <a href="/tags/数据结构与算法/" style="font-size: 15px;">数据结构与算法</a> <a href="/tags/main/" style="font-size: 15px;">main</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/jar/" style="font-size: 15px;">jar</a> <a href="/tags/idea/" style="font-size: 15px;">idea</a> <a href="/tags/maven/" style="font-size: 15px;">maven</a> <a href="/tags/groovy/" style="font-size: 15px;">groovy</a> <a href="/tags/编译/" style="font-size: 15px;">编译</a> <a href="/tags/codeStyle/" style="font-size: 15px;">codeStyle</a> <a href="/tags/launchd/" style="font-size: 15px;">launchd</a> <a href="/tags/plist/" style="font-size: 15px;">plist</a> <a href="/tags/打包/" style="font-size: 15px;">打包</a> <a href="/tags/redisson/" style="font-size: 15px;">redisson</a> <a href="/tags/分布式/" style="font-size: 15px;">分布式</a> <a href="/tags/redis/" style="font-size: 15px;">redis</a> <a href="/tags/ssh/" style="font-size: 15px;">ssh</a> <a href="/tags/百度云/" style="font-size: 15px;">百度云</a> <a href="/tags/aria2/" style="font-size: 15px;">aria2</a> <a href="/tags/无限制下载/" style="font-size: 15px;">无限制下载</a> <a href="/tags/websocket/" style="font-size: 15px;">websocket</a> <a href="/tags/单元测试/" style="font-size: 15px;">单元测试</a> <a href="/tags/mac/" style="font-size: 15px;">mac</a> <a href="/tags/mweb/" style="font-size: 15px;">mweb</a> <a href="/tags/印象笔记/" style="font-size: 15px;">印象笔记</a> <a href="/tags/zookeeper/" style="font-size: 15px;">zookeeper</a> <a href="/tags/ftp/" style="font-size: 15px;">ftp</a> <a href="/tags/sudo/" style="font-size: 15px;">sudo</a> <a href="/tags/类加载/" style="font-size: 15px;">类加载</a> <a href="/tags/jvm/" style="font-size: 15px;">jvm</a> <a href="/tags/静态资源/" style="font-size: 15px;">静态资源</a> <a href="/tags/static/" style="font-size: 15px;">static</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/10/01/2018-03/旅行的意义/">2018-03/旅行的意义</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/31/2018-03/mac 百度云无限制下载/">利用aria2实现百度云无限制下载</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/25/2018-03/类加载机制/">类加载机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/20/2018-03/maven jar打包/">maven jar 打包</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/18/2018-03/groovy作为单元测试 编译问题解决/">groovy作为单元测试 编译问题解决</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/15/2018-03/mac 开机自启/">mac 开机自启</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/15/2018-03/在不是root的情况下传输文件/">在不是root的情况下传输文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/14/2018-03/ sptingboot  可运行jar/">sptingboot  可运行jar</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/14/2018-03/bash到main函数参数解析错误分析/">bash到main函数参数解析错误分析</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/14/2018-03/静态资源/">Spring Boot 静态资源</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//dongweima.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://github.com/dongweima" title="github" target="_blank">github</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">Dongweima.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
