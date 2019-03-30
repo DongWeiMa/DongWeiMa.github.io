@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Teach Yourself Programming in Ten Years 翻译 | Dongweima</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Teach Yourself Programming in Ten Years 翻译</h1><a id="logo" href="/.">Dongweima</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Teach Yourself Programming in Ten Years 翻译</h1><div class="post-meta">Mar 30, 2019<span> | </span><span class="category"><a href="/categories/翻译/">翻译</a></span></div><a class="disqus-comment-count" data-disqus-identifier="2019/03/30/2019-03/Teach Yourself Programming in Ten Years翻译/" href="/2019/03/30/2019-03/Teach Yourself Programming in Ten Years翻译/#disqus_thread"></a><div class="post-content"><h1 id="教你十年学会编程"><a href="#教你十年学会编程" class="headerlink" title="教你十年学会编程"></a>教你十年学会编程</h1><p>原文链接:<br><a href="http://norvig.com/21-days.html" target="_blank" rel="noopener">http://norvig.com/21-days.html</a><br>中文翻译:<br><a href="https://liuyandong.com/2017/10/25/122/" target="_blank" rel="noopener">https://liuyandong.com/2017/10/25/122/</a></p>
+<p>那个中文翻译要比自己翻译的好得多23333</p>
+<h2 id="为什么现在的人如此浮躁"><a href="#为什么现在的人如此浮躁" class="headerlink" title="为什么现在的人如此浮躁"></a>为什么现在的人如此浮躁</h2><p>走进书店, 你将会看到很多类似 &lt;&lt;教你24学会编程&gt;&gt;的书,旁边摆放着很多速成C, SQL, Ruby, Algorithms的书.<br>亚马逊中搜索[title: teach, yourself, hours, since: 2000]能搜索出512本这样的书.其中,排名前十的书,九本是编程是编程书籍,剩余的一个是关于记账的(ps:个人去搜索了一下,中文的也是有几百本,关于入门和速成的书籍,大部分是编程类).将teach yourself 替换为 学习,小时之类的词汇,得到的结果也是类似的.</p>
+<p>结论是:每个人都是对编程都是浮躁的,急于求成的.或者说都编程在某种程度上比其他东西更加容易学习.Felleisen et al.认同这个趋势在他们的&lt;&lt; How to Design Programs&gt;&gt;书中,当他们说:糟糕的编程是容易的,白痴也能在21天学会.在The Abtruse Goose中,也表达了同样的看法。</p>
+<p>让我们分析 Teach Yourself C++ in 24 Hours表达的意思:</p>
+<ul>
+<li>教会你自己: 在未来24小时,你没有时间去写几个重要的程序,从成功或失败中学习;你没有时间和一个优秀的工程师一起工作,并且理解活在C++环境;简而言之,你没有时间去学习更多的东西.因此,这一类的书只会教你粗浅的,不是一个深度的理解.正如Alexander Pope所说,粗浅的学习是一件危险的事情.</li>
+<li>C++: 如果你有其他语言的基础,你将在24小时内学习到一些c++语法,但是你无法学习到如何使用语言.简而言之,如果你说的是基础的编程,你能够用基础的语法去写c++程序,但你不能够确定你的代码的质量是好还是坏.那么观点是什么呢? (首界图灵奖得主)Alan Perlis曾经说过:<br>一门语言不能影响到你的编程思维,那么他是不值得学习的.一个可能的观点是:你学习了一小部分c++(或者其他的,比如js,进程),因为你学要使用一个已存在的工具去完成任务.但是之后,你不会学习如何编程;你学会如何完成任务;</li>
+<li>in 24 Hours:不幸的是,这个是不充分的,将在下一个章节展示.</li>
+</ul>
+<h2 id="教你十年学会编程-1"><a href="#教你十年学会编程-1" class="headerlink" title="教你十年学会编程"></a>教你十年学会编程</h2><p>Researchers  提过:要成为一个领域的专家大概需要学习十年,包括下棋,音乐作曲,钢琴等,关键的练习:不仅仅一遍一遍的做,并且要挑战超过当前你能力的任务,尝试他,当完成中或完成以后,分析你的表现中正确的部分和失误的部分,然后不断的重复.这里看起来没有捷径:即使莫扎特也从4岁开始花费了13年才能做出世界闻名的曲子.另一个样例是披头士乐队,他们在1964一夜成名,但是他们从1957年就在一个小的俱乐部演出了.尽管早期也有一些观众,实际他们的第一次重大成功的专辑是 Sgt. Peppers,发布于1967年.</p>
+<p>Malcolm Gladwell 有一个受欢迎的观点:10000小时理论. Henri Cartier-Bresson (1908-2004) 有另一个观点:你的前10000张照片是你最坏的(他没有预见到数码相机的出现,一些人能够在一周内完成10000+的照片),真正的大师可能要一生才能达到.<br>Samuel Johnson 说: 在任何领域卓越的成就,都需要努力一生,这个不是一个能以较低的成本买入的东西.<br>Chaucer 抱怨:生命如此短暂,工艺如此漫长.<br> Hippocrates 说过过一个著名的话:艺术没有止境,生命却有尽头.原话是:<br>艺术长久，人生短暂，机会稍纵即逝，人生无常,决策困难.<br> 当然,不止一种最终的答案:毕竟，假设掌握所有的技能(比如编程，下棋，跳棋和音乐)需要相同的时间也不合适，不同的人也会用不同的时间.<br>K.Anders Ericsson教授说过：“值得注意的是，在大多数领域，即使你是个天才，要达到专家级别的高水平仍然需要时间。10000个小时只是给你一个概念，一个天才，如果每周练习10到20个小时的时间，仍然需要数年时间才能达到专家级别的水平。”</p>
+<h2 id="所以你想成为一个程序员"><a href="#所以你想成为一个程序员" class="headerlink" title="所以你想成为一个程序员"></a>所以你想成为一个程序员</h2><p> 这个是我的编程秘诀:</p>
+<ul>
+<li>对编程产生兴趣,做一些有意思的事情.保证这个是有足够的快乐,你才会愿意去投入十年.</li>
+<li>编程.最好的学习方式是边学边做.更具有技术性的:”一个领域的最该水平不是通过自动的重复的执行老的行为模式,能力的增长是通过刻意的努力改善达到的”,”最有效的学习方式是通过有适当难度的任务,联系和反馈调整”.&lt;&lt; Cognition in Practice: Mind, Mathematics, and Culture in Everyday Life &gt;&gt; 是一个有趣的观点.</li>
+<li>和别的程序员交流:阅读其他项目,这个超过其他任何书或联系课程.</li>
+<li>如果你愿意,在大学待四年.(研究生或更多).这将给你带来一些工作的机会.并且这将给你带来一个深入理解这个领域的机会,但是如果你不享受学校,你可以在工作中获取到类似的经验.光凭书本的知识是不够的.</li>
+<li>计算机科学教育不能让每一个人成为一个专业的程序员就像学习画笔和颜料不可能让你成为画家一样.我之前雇佣最好的程序员之一是一个高中文凭的家伙,他生产了很棒的软件,拥有自己的新闻组,在期权中赚到了足够多的钱买了自己的酒吧。</li>
+<li>和其他程序员一起工作.成为一些项目中最优秀的程序员;在一些项目中成为最差的程序员;当你成为最优秀的,你要尝试去领导一个项目,激励其他人.当你是最差的时候,你要学习领导者是怎么做的,不喜欢做什么(因为他们让你来做…).</li>
+<li>接手并推进别人的项目.理解一个项目被一些人共同编写.当原始开发的程序员不在,理解和修复代码.思考怎样去设计能够让你的项目更加容易被下一个接手的人理解.</li>
+<li>了解至少六种编程语言.包含一种强语言 像java,c++之类的,一种函数式语言,像lisp 等,一种支持句法抽象的,像lisp.一种支持声明性规范的语言像c++ templates.一种强调并行性的.像go</li>
+<li>记住，在“计算机科学”中在“计算机”这个词语.理解执行一条指令要花多少时间.从内存中取一个字（要考虑缓存有没有命中的情况）要多久，从硬盘中连续读字节要多久，在硬盘中寻址定位要多久？</li>
+<li>参与语言标准化工作,可以是 ANSI C++委员会,也可以是决定你的本地代码是空两格还是4格;无论哪种方式,你从其他人身上学习他们对语言的喜爱,他们的喜爱程度,或许一点他们的感受.</li>
+<li>有一个良好的意识 尽可能快的脱离一个语言标准化</li>
+</ul>
+<p> 考虑到这一切,从书中能学到多少是要被质疑的.在你的第一个孩子出生之前,我阅读了所有的如何做的书,但是最终表现的还是一个无能的新手.30个月之后,当我的第二个孩子出生,我需要去看书复习吗?相反,我根据自己的经验完成了,事实上经验和专家编写的上千页的书更有用.</p>
+<p> 弗雷德·布鲁克斯在他的《没有银弹》文章中给找出优秀的软件设计出了三条建议：</p>
+<ol>
+<li>尽早地系统地识别出顶级设计师</li>
+<li>每个人给分配一个职业规划的导师</li>
+<li>让成长中的设计师有机会互相切磋武艺</li>
+</ol>
+<p>假如一些人有潜力成为一个好的设计师,那么工作就是去引导他们.艾伦·佩里斯 更简洁的说:每个人能够被教导雕塑,那么米开朗琪罗应该被教导去不做什么.伟大的程序员也是一样的.Perlis 说过:伟大的人都有一些内在的品质,这些品质比训练更重要.那么这些品质来自哪里呢?天生的吗?还是后天勤奋养成的.正如 动画片《料理鼠王》里的幻象大厨Auguste Gusteau说的那样:”任何人都可以做饭,只有大胆的人才能变得优秀”, 我认为把你生命中的大部分时间花在有针对性的练习上”这种精神，看作一种自愿奉献的精神.或许大胆也是一种方法,或者,就像Gusteau’s critic, Anton Ego  说的,”不是所有人都能成为一个优秀的演员,但是一个优秀的演员可能来自任何地方”.</p>
+<p>所以，尽管买本 Java/Ruby/Javascript/PHP 的书吧;你尽可能从中学到一些东西.但是作为一个程序员,你不能改变你的人生,或者提高你的技能水平在短短24小时.连续努力24个月怎么样?你该上路了…</p>
+</div><div class="tags"><a href="/tags/思考/">思考</a><a href="/tags/学习/">学习</a></div><div class="post-nav"><a class="pre" href="/2019/03/30/ARTS/arts第0周/">ARTS第0周，准备工作</a><a class="next" href="/2019/03/30/ARTS/arts 第2周/">arts 第2周</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
+    this.page.url = 'http://flyily.com/2019/03/30/2019-03/Teach Yourself Programming in Ten Years翻译/';
+    this.page.identifier = '2019/03/30/2019-03/Teach Yourself Programming in Ten Years翻译/';
+    this.page.title = 'Teach Yourself Programming in Ten Years 翻译';
+  };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
+url: 'https://disqus.com/next/config.json',
+timeout: 2500,
+type: 'GET',
+success: function(){
+  var d = document;
+  var s = d.createElement('script');
+  s.src = '//dongweima.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', + new Date());
+  (d.head || d.body).appendChild(s);
+  $('.disqus_click_btn').css('display', 'none');
+},
+error: function() {
+  $('.disqus_click_btn').css('display', 'block');
+}
+});</script><script type="text/javascript" id="disqus-click-load">$('.btn_click_load').click(() => {  //click to load comments
+    (() => { // DON'T EDIT BELOW THIS LINE
+        var d = document;
+        var s = d.createElement('script');
+        s.src = '//dongweima.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    $('.disqus_click_btn').css('display','none');
+});</script><script type="text/javascript" id="disqus-count-script">$(function() {
+     var xhr = new XMLHttpRequest();
+     xhr.open('GET', '//disqus.com/next/config.json', true);
+     xhr.timeout = 2500;
+     xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4 && xhr.status === 200) {
+         $('.post-meta .post-comments-count').show();
+         var s = document.createElement('script');
+         s.id = 'dsq-count-scr';
+         s.src = 'https://dongweima.disqus.com/count.js';
+         s.async = true;
+         (document.head || document.body).appendChild(s);
+       }
+     };
+     xhr.ontimeout = function () { xhr.abort(); };
+     xhr.send(null);
+   });
+</script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="http://flyily.com"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ARTS/">ARTS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/jvm/">jvm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/springboot/">springboot</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/分布式/">分布式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/协议/">协议</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/单元测试/">单元测试</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/反省/">反省</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习/">学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/微服务/">微服务</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/思考/">思考</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构与算法/">数据结构与算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂谈/">杂谈</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/翻译/">翻译</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件配置/">软件配置</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/分布式/" style="font-size: 15px;">分布式</a> <a href="/tags/jar/" style="font-size: 15px;">-jar</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/jar/" style="font-size: 15px;">jar</a> <a href="/tags/百度云/" style="font-size: 15px;">百度云</a> <a href="/tags/aria2/" style="font-size: 15px;">aria2</a> <a href="/tags/无限制下载/" style="font-size: 15px;">无限制下载</a> <a href="/tags/redis/" style="font-size: 15px;">redis</a> <a href="/tags/数据结构与算法/" style="font-size: 15px;">数据结构与算法</a> <a href="/tags/launchd/" style="font-size: 15px;">launchd</a> <a href="/tags/plist/" style="font-size: 15px;">plist</a> <a href="/tags/idea/" style="font-size: 15px;">idea</a> <a href="/tags/maven/" style="font-size: 15px;">maven</a> <a href="/tags/groovy/" style="font-size: 15px;">groovy</a> <a href="/tags/编译/" style="font-size: 15px;">编译</a> <a href="/tags/codeStyle/" style="font-size: 15px;">codeStyle</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/ssh/" style="font-size: 15px;">ssh</a> <a href="/tags/打包/" style="font-size: 15px;">打包</a> <a href="/tags/websocket/" style="font-size: 15px;">websocket</a> <a href="/tags/单元测试/" style="font-size: 15px;">单元测试</a> <a href="/tags/redisson/" style="font-size: 15px;">redisson</a> <a href="/tags/main/" style="font-size: 15px;">main</a> <a href="/tags/mac/" style="font-size: 15px;">mac</a> <a href="/tags/mweb/" style="font-size: 15px;">mweb</a> <a href="/tags/印象笔记/" style="font-size: 15px;">印象笔记</a> <a href="/tags/zookeeper/" style="font-size: 15px;">zookeeper</a> <a href="/tags/静态资源/" style="font-size: 15px;">静态资源</a> <a href="/tags/static/" style="font-size: 15px;">static</a> <a href="/tags/ftp/" style="font-size: 15px;">ftp</a> <a href="/tags/sudo/" style="font-size: 15px;">sudo</a> <a href="/tags/旅行/" style="font-size: 15px;">旅行</a> <a href="/tags/思考/" style="font-size: 15px;">思考</a> <a href="/tags/类加载/" style="font-size: 15px;">类加载</a> <a href="/tags/jvm/" style="font-size: 15px;">jvm</a> <a href="/tags/数据库/" style="font-size: 15px;">数据库</a> <a href="/tags/杂谈/" style="font-size: 15px;">杂谈</a> <a href="/tags/测试/" style="font-size: 15px;">测试</a> <a href="/tags/工具/" style="font-size: 15px;">工具</a> <a href="/tags/ARTS/" style="font-size: 15px;">ARTS</a> <a href="/tags/反省/" style="font-size: 15px;">反省</a> <a href="/tags/学习/" style="font-size: 15px;">学习</a> <a href="/tags/微服务/" style="font-size: 15px;">微服务</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/03/30/ARTS/arts第0周/">ARTS第0周，准备工作</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/30/2019-03/Teach Yourself Programming in Ten Years翻译/">Teach Yourself Programming in Ten Years 翻译</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/30/ARTS/arts 第2周/">arts 第2周</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/25/ARTS/arts 第1周/">arts 第1周</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/24/2019-03/如何阅读源码/">98 | 高效学习：如何学习和阅读代码 摘录</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/24/2019-03/策略模式/">策略模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/24/2019-03/关于双重网管和网关聚合服务/">关于双重网关和网关聚合服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/18/2019-03/api网关入门/">api 网关入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/01/2019-03/api网关之zuul 1.x/">api 网关之 zuul 1.x</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/01/2019-03/is开头boolean字段的反省/">is开头boolean类型字段的反省</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//dongweima.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://github.com/dongweima" title="github" target="_blank">github</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">Dongweima.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
