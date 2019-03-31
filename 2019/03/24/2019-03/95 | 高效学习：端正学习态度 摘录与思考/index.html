@@ -1,20 +1,47 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>bash到main函数参数解析错误分析 | Dongweima</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">bash到main函数参数解析错误分析</h1><a id="logo" href="/.">Dongweima</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">bash到main函数参数解析错误分析</h1><div class="post-meta">Mar 14, 2018<span> | </span><span class="category"><a href="/categories/软件配置/">软件配置</a></span></div><a class="disqus-comment-count" data-disqus-identifier="2018/03/14/2018-03/bash到main函数参数解析错误分析/" href="/2018/03/14/2018-03/bash到main函数参数解析错误分析/#disqus_thread"></a><div class="post-content"><p>今天遇到一个问题,就是命令行运行jar包,输入参数时,运行报错(报错是因为java读到的参数不对)</p>
-<a id="more"></a>
-<h2 id="原因是因为参数中有-amp-符号"><a href="#原因是因为参数中有-amp-符号" class="headerlink" title="原因是因为参数中有!,&amp;符号"></a>原因是因为参数中有!,&amp;符号</h2><h2 id="解决"><a href="#解决" class="headerlink" title="解决:"></a>解决:</h2><p>给这些特殊字符转义,前面加\就行</p>
-<h2 id="真正原因"><a href="#真正原因" class="headerlink" title="真正原因"></a>真正原因</h2><p><strong>是shell层解析的问题,</strong><br>Shell命令行中的特殊字符及其转义</p>
-<h3 id="在shell中-特殊字符的转义有三种办法"><a href="#在shell中-特殊字符的转义有三种办法" class="headerlink" title="在shell中,特殊字符的转义有三种办法"></a>在shell中,特殊字符的转义有三种办法</h3><ol>
-<li><p>用\转义: 把\字符放在特殊字符的前面</p>
-</li>
-<li><p>用单引号(‘’)转义: 用单引号把参数括起来</p>
-</li>
-<li><p>用双引号(“”)转义: 用双引号把参数括起来</p>
-</li>
-</ol>
-<h3 id="常见的一些特殊字符"><a href="#常见的一些特殊字符" class="headerlink" title="常见的一些特殊字符"></a>常见的一些特殊字符</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">* 任意个任意字符 </span><br><span class="line">? 一个任意字符 </span><br><span class="line">[..] []中的任意一个字符,这里也类似于正则表达式,中括号内可以是具体的一些字符,如[abcd]也可以是用-指定的一个范围,如[a-d] </span><br><span class="line"># 注释 </span><br><span class="line">(空格) 参数分隔符 </span><br><span class="line">cmd 命令替换 </span><br><span class="line">| 管道 </span><br><span class="line">&amp; 后台执行 </span><br><span class="line">; 命令分隔符(可以在同一行执行两个命令,用;分割)</span><br></pre></td></tr></table></figure>
-</div><div class="tags"><a href="/tags/main/">main</a><a href="/tags/shell/">shell</a><a href="/tags/jar/">jar</a></div><div class="post-nav"><a class="pre" href="/2018/03/14/2018-03/静态资源/">Spring Boot 静态资源</a><a class="next" href="/2018/03/14/2018-03/ sptingboot  可运行jar/">sptingboot  可运行jar</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
-    this.page.url = 'http://flyily.com/2018/03/14/2018-03/bash到main函数参数解析错误分析/';
-    this.page.identifier = '2018/03/14/2018-03/bash到main函数参数解析错误分析/';
-    this.page.title = 'bash到main函数参数解析错误分析';
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>&lt;&lt;95 | 高效学习：端正学习态度&gt;&gt; 摘录与思考 | Dongweima</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">&lt;&lt;95 | 高效学习：端正学习态度&gt;&gt; 摘录与思考</h1><a id="logo" href="/.">Dongweima</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">&lt;&lt;95 | 高效学习：端正学习态度&gt;&gt; 摘录与思考</h1><div class="post-meta">Mar 24, 2019<span> | </span><span class="category"><a href="/categories/学习/">学习</a></span></div><a class="disqus-comment-count" data-disqus-identifier="2019/03/24/2019-03/95 | 高效学习：端正学习态度 摘录与思考/" href="/2019/03/24/2019-03/95 | 高效学习：端正学习态度 摘录与思考/#disqus_thread"></a><div class="post-content"><h1 id="lt-gt-摘录与思考"><a href="#lt-gt-摘录与思考" class="headerlink" title="&lt;&gt; 摘录与思考"></a>&lt;<95 | 高效学习：端正学习态度>&gt; 摘录与思考</95></h1><blockquote>
+<p>前提:<br>1.有意识,更要有动力<br>2.学习的目标与方向<br>3.自主学习的方法与技巧<br>4.实践和坚持–自律,坚持,举一反三,不断追问</p>
+</blockquote>
+<h2 id="关于学习留存率"><a href="#关于学习留存率" class="headerlink" title="关于学习留存率"></a>关于学习留存率</h2><p><img src="/image/15540243202488.jpg" alt></p>
+<blockquote>
+<p>被动学习：如听讲、阅读、视听、演示，学习内容的平均留存率为 5%、10%、20% 和 30%</p>
+</blockquote>
+<blockquote>
+<p>主动学习：如通过讨论、实践、教授给他人，会将原来被动学习的内容留存率从 5% 提升到 50%、75% 和 90</p>
+</blockquote>
+<ul>
+<li>这一点是验证过的,之前每天上班听知乎live,听的时候觉得听进去,但是事后没有整理,过两天就忘的差不多了.听讲的留存率确实低;</li>
+<li>看书也是,有些技术书,看完了,也简单实践了,但是留存率还是有点低,仅仅看书就更不用说了;反而工作中用到了,再去查资料,再使用,留存率就很高了,其中可能思考和实践发挥了比较大的作用;</li>
+<li>分享的作用,…废话,要把人讲懂,自己肯定会思考自己有哪些问题,然后反复准备啊,或者以前就有足够的经验…反正就是问题和思考出发的;有点半方法论的感觉</li>
+</ul>
+<blockquote>
+<p>1.短时间获取到知识的快感与幻觉<br>2.训练自己获取知识的能力，他们到源头查看第一手的资料</p>
+</blockquote>
+<p>对于二手资料,我觉得要用一种辩证的角度去看待;<br>对于自己所在的领域,一手资料是非常重要的;但是不是自己所在的领域,二手资料能帮助我们快速了解一些东西的全貌,但是即使是二手的,也是尽量找靠近信息源的;</p>
+<p>知识的传递,每过一层,都会经过一次编码与解码,消息的损失和噪声的干扰都是不可预计的;<br>那么能网上找信息源就尽量找到信息源;</p>
+<p>但是问题来了,除了一手的信息源,二手信息源我们是无法知道经过了几层的信息传递,这个时候,人类文明的信誉就出来了,一些著名的程序员,一些著名信息聚合地就可以帮助我们,这些信息可能是二手的,但是他们可能对我们来说是能找到最靠近一手信息的地方,也是信息还原度比较高的地方;</p>
+<blockquote>
+<p>如何深度学习<br>1.质量的信息源和第一手的知识。<br>2.把知识连成地图，将自己的理解反述出来<br>3.不断地反思和思辨，与不同年龄段的人讨论<br>4.举一反三，并践行之，把知识转换成技能</p>
+</blockquote>
+<blockquote>
+<p>深度学习的另一种说法:三个步骤<br>1.知识采集:信息源是非常重要的，获取信息源头、破解表面信息的内在本质、多方数据印证，是这个步骤的关键<br>2.知识缝合:所谓缝合就是把信息组织起来，成为结构体的知识。这里，连接记忆,逻辑推理，知识梳理是很重要的三部分<br>3.技能转换:通过举一反三、实践和练习，以及传授教导，把知识转化成自己的技能</p>
+</blockquote>
+<p>我们假设<br>1.大脑的思考不是简单随机查找,而是基于随机加最短路径加索引的查找;<br>2.每一次查找,遍历到的节点都会被不同程度刺激(主观刺激大于被动刺激);<br>3.大脑到普通神经元有两中路径:1.通过问题的索引直达,通过神经元连接触达;<br>4.神经节点的层级可以通过刺激升级(翻转);<br>5.方法论层:方法论层是问题的集合,将不同的问题聚合,建立索引,关联,是最靠近大脑的一层,也是顶层神经元;<br>6.一个个问题是神经元的次起点,每个问题都有到大脑的索引,只要触发了该问题,就能通过该索引直到对应的神经元;<br>7.一个个知识点是一个个神经元,更多的是叶子节点;<br>8.神经元之间建立大量连接,连接的建立前提是联想;<br>9.连接和神经元活动的加强是通过主动反复训练和被动概率性扫描刺激;</p>
+<p>根据以上假设:</p>
+<p>1.关于信息源:最好一手,二手的话也是要在多方印证下的,保证信息的还原度和正确性.</p>
+<p>2.桥接:将已有的知识和新的知识关联,这个是记忆的原理<br>假设新的知识在一个新的孤立的神经元上,开始的时候,他和其他神经元只有一个脆弱的连接;<br>这个连接如果刺激的频率没达到一定层度,可能就退化了…;<br>如果该神经元不和其他神经元加强连接,过段时间可能就断了…再也导不了电了;<br>下次再去学同样的知识,就变为又创建了新的神经元;<br>相反,通过联想,将知识串联起来,就是让这个神经元和其他神经元创建连接,增加被刺激的概率,串联的越多,越往上,概率就越大,连接就越稳定,神经元活性就越大;</p>
+<p>3.举一反三啊,践行啊,思辨,教导啊…这些在我看来都是从问题域出发甚至跟进一步到方法论,主动性刺激,加强神经元的连接和本体,并且创建大量查询索引,这样下次查询就能走更近的连接;<br>如果把网状的神经元看成树状,这种做法就是树的翻转,将叶子节点转转,转到理根节点近一点;刺激越多,越大,这种翻转的效果就越好;<br>(讲故事系列)</p>
+<blockquote>
+<p>关于学习的观点<br>1.学习不仅仅是为了找到答案，而更是为了找到方法<br>2.学习是为了找到原理<br>3.学习是为了了解自己<br>4.学习是为了改变自己</p>
+</blockquote>
+<p>这几点的讨论更加偏向于哲学性,<br>但是如果把人的学习当成机器人升级,再来看着几个观点,就有意思了;<br>1.最简单的机器人V1.0,只会处理我们预设的输入输出;(死记硬背)<br>2.升级版V1.1,编写了通用函数,能处理和路由对应的问题到函数(方法)<br>3.升级V1.2 升级了比对程序和通信,可以和其他机器沟通,比较自己的缺陷,并主动修复<br>4.升级V2.0,升级了硬件,采用了量子技术,提升了指令的执行速度和执行方式</p>
+<p>玩笑归玩笑,<br>最关心的一句:</p>
+<blockquote>
+<p>你可以回顾一下自己的成长经历，哪一次你有质的成长时，不是因为你突然间开窍了，开始用一种更有效率、更科学、更系统的方式做事，然后让你达到了更高的地方</p>
+</blockquote>
+</div><div class="tags"><a href="/tags/学习/">学习</a></div><div class="post-nav"><a class="pre" href="/2019/03/24/2019-03/策略模式/">策略模式</a><a class="next" href="/2019/03/24/2019-03/关于双重网管和网关聚合服务/">关于双重网关和网关聚合服务</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
+    this.page.url = 'http://flyily.com/2019/03/24/2019-03/95 | 高效学习：端正学习态度 摘录与思考/';
+    this.page.identifier = '2019/03/24/2019-03/95 | 高效学习：端正学习态度 摘录与思考/';
+    this.page.title = '&lt;&lt;95 | 高效学习：端正学习态度&gt;&gt; 摘录与思考';
   };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
 url: 'https://disqus.com/next/config.json',
 timeout: 2500,
